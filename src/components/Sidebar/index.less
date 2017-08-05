@@ -1,0 +1,120 @@
+// 又到了痛苦的写css的时间了啊...
+
+// less虽然引入了变量/函数/流程控制之类的, 更类似编程语言了, 但写法还是有些奇怪的
+@sidebarCollapsible: true; // 侧边栏是否可折叠, 这个变量是通过webpack less-loader传进来的
+
+// 下方折叠按钮的样式
+.ant-layout-sidebar-trigger {
+  position: fixed;
+  width: inherit;
+  top: 0;
+  cursor: pointer;
+  height: 50px;
+  line-height: 48px;
+  color: #fff;
+  background-color: #367fa9;
+  .anticon-bars{
+    float: right;
+    padding: 15px;
+    font-size: 21px;
+  }
+  >span{
+    text-align: center;
+    font-size: 14px;
+  }
+  & when not (@sidebarCollapsible = true) {
+    display: none;
+  }
+}
+
+.ant-layout-sidebar-base {
+  background: #222d32;
+  position: fixed;
+  padding-bottom: 24px;
+  transition: all 0.3s ease;
+
+  // less的if语句: http://stackoverflow.com/questions/14910667/how-to-use-if-statements-in-less
+  // 但是没有else语句...
+  & when (@sidebarCollapsible = true) {
+    height: calc(~"100% - 42px"); // 这是个很神奇的写法, 要减去下方按钮的高度
+  }
+  & when not (@sidebarCollapsible = true) {
+    height: 100%;
+  }
+}
+
+.ant-layout-sidebar {
+  position:fixed;
+  width: 224px; // 正常的侧边栏宽度
+  .ant-layout-sidebar-base; // less的mixin很好用, 代码复用的几种方式: 继承 vs mixin vs 组合
+}
+
+.ant-layout-sidebar-collapse {
+  width: 64px; // 侧边栏折叠时的宽度
+  .ant-layout-sidebar-base;
+}
+
+/* 定义侧边栏正常显示时的样式 - begin */
+.ant-layout-sidebar > .ant-menu {
+  margin-bottom: 20px;
+}
+
+.ant-layout-sidebar > .ant-menu > .ant-menu-item {
+  margin: 16px 0;
+  >a{
+    color:#fff;
+  }
+}
+
+.ant-layout-sidebar > .ant-menu > .ant-menu-item .nav-text {
+  vertical-align: baseline;
+  display: inline-block;
+}
+
+.ant-layout-sidebar > .ant-menu .invisible-nav-text {
+  // 不用display:none, 而是设为0px, 动画效果就比较明显
+  // 这都能想到, 我都佩服自己...
+  font-size: 0px;
+}
+
+.ant-layout-sidebar > .ant-menu > .ant-menu-item > .anticon {
+  transition: font-size .3s;
+}
+
+/* 定义侧边栏正常显示时的样式 - end */
+
+/* 定义侧边栏折叠时的样式 - begin */
+.ant-layout-sidebar-collapse > .ant-menu .anticon {
+  font-size: 16px;
+  display: inline-block;
+
+}
+
+.ant-layout-sidebar-collapse > .ant-menu .ant-menu-submenu-title:after {
+  content: ''; // 去除submenu右方的箭头提示
+}
+
+.ant-layout-sidebar-collapse > .ant-menu .nav-text {
+  display: none; // 折叠时菜单项文字隐藏
+}
+.ant-menu-dark {
+  background-color: #222d32;
+    .ant-menu-item-selected{
+      background-color:#1e282c;
+  }
+}
+.ant-menu-dark.ant-menu-inline .ant-menu-item-selected {
+    background-color: #1e282c;
+}
+.ant-layout-sidebar-collapse > .ant-menu .invisible-nav-text {
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+.ant-layout-sidebar{
+  .ant-layout-sidebar-trigger{
+    background-color: #1679c6;
+  }
+}
+
+/* 定义侧边栏折叠时的样式 - end */

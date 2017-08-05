@@ -1,0 +1,307 @@
+.ant-advanced-search-form {
+  padding: 16px 8px;
+  background: #f8f8f8;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+}
+
+/* 由于输入标签长度不确定，所以需要微调使之看上去居中 */
+.ant-advanced-search-form > .ant-row {
+  position: relative;
+  left: -6px;
+}
+
+.ant-advanced-search-form .ant-btn + .ant-btn {
+  margin-left: 8px;
+}
+
+/* 我讨厌写css... */
+.db-pagination {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  float: left;
+}
+
+.db-table-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.ant-upload {
+  margin-left: 4px;
+}
+.card-main{
+  margin-top: 30px;
+  .ant-row{
+    .ant-card{
+      margin-bottom: 16px;
+      .ant-card-head-title{
+        text-align: center;
+        font-size: 16px;
+      }
+      .ant-card-body{
+        .custom-image{
+          height: 80px;
+          .status-running-0{
+            background-color: #dd4b39;
+            border-color: #d73925;
+          }
+          .status-running-1{
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+          }
+          .status-on-1{
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+          }
+          .status-on-0{
+            background-color: #ccc;
+            border-color: #ccc;
+          }
+        }
+        .custom-card{
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+.total-main{
+  margin-top: 30px;
+  .total-title{
+      height: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      >p{
+        line-height: 50px;
+      }
+  }
+  .ant-row{
+    .total-title-circle{
+      height: 50px;
+      text-align: center;
+      >p{
+        line-height: 50px;
+      }
+    }
+    .total-circle-list{
+      text-align: center;
+      line-height: 350px;
+    }
+    .total-line-list{
+      width: 270px;
+      margin: 90px auto;
+      transform: rotate(-90deg);
+      .ant-progress{
+        line-height: 20px;
+      }
+      .total-line-one{
+        >tag{
+          margin-left: -60px;
+          display: inline-block;
+          width: 60px;
+          text-align: right;
+          overflow: hidden;
+          vertical-align: middle;
+          // transform: rotate(90deg);
+        }
+      }
+      
+    }
+    .total-default-count-list{
+      width: 600px;
+      margin: 0 auto;
+      .ant-progress{
+        line-height: 20px;
+      }
+     
+      .total-line-two{
+        >tag{
+          margin-left: -60px;
+          display: inline-block;
+          width: 60px;
+          text-align: right;
+          overflow: hidden;
+          vertical-align: middle;
+          // transform: rotate(90deg);
+        }
+      }
+      
+    }
+    .total-fault-count-list{
+      width: 600px;
+      margin: 0 auto;
+    }
+    .total-efficient-list{
+      width: 270px;
+      margin: 90px auto;
+      transform: rotate(-90deg);
+      
+      .total-line-two{
+        >tag{
+          margin-left: -60px;
+          display: inline-block;
+          width: 60px;
+          text-align: right;
+          overflow: hidden;
+          transform: rotate(90deg);
+          line-height: 25px;
+          vertical-align: middle;
+        }
+      }
+      
+    }
+  }
+}
+
+.query-main{
+  .ant-row{
+    .ant-col-xs-11{
+      margin-right: 5px;
+    }
+    padding-top: 20px;
+    .ant-card {
+      .ant-card-body{
+        >span{
+          padding-right: 20px;
+        }
+      }
+    }
+    >img {
+      width: 300px;
+    }
+    .machine-list{
+      height: 30px;
+      line-height: 30px;
+      >span{
+        padding-right: 20px;
+      }
+    }
+    .machine-header{
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      font-weight: bold;
+      border-bottom: 1px solid #f4f4f4;
+    }
+    .machine-status{
+      .status-running-0{
+        background-color: #dd4b39;
+        border-color: #d73925;
+      }
+      .status-running-1{
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+      }
+      .status-on-1{
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+      }
+      .status-on-0{
+        background-color: #ccc;
+        border-color: #ccc;
+      }
+    }
+  }
+
+}
+.fault-main{
+  .ant-row{
+    padding-top: 20px;
+    .ant-card {
+      .ant-card-body{
+        >span{
+          padding-right: 20px;
+        }
+      }
+    }
+    >img {
+      width: 300px;
+    }
+    .machine-header{
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      font-weight: bold;
+      border-bottom: 1px solid #f4f4f4;
+    }
+    .machine-status{
+      .machine-list{
+        >span{
+          line-height: 20px;
+          padding-right: 20px;
+        }
+        
+      }
+    }
+    .machine-data{
+      .data-line{
+        border-bottom: 1px solid #f4f4f4;
+      }
+    }
+    .machine-process{
+      padding-top: 30px;
+    }
+  }
+
+}
+.capacity-main{
+  .ant-row{
+    padding-top: 20px;
+    .row-list{
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    .total-title-circle{
+      height: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;;
+    }
+    .total-circle-list{
+      text-align: center;
+    }
+    .single-row{
+      width: 800px;
+      text-align: center;
+    }
+    .total-efficient-list{
+      width: 600px;
+      margin: 0 auto;
+    }
+    .total-fault-count-list{
+      width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
+.capacity-province-main{
+  .ant-row{
+    .row-list{
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    .ant-card{
+      .custom-image{
+        height: 85px;
+        .yield{
+          text-align: center;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .ant-col-24{
+          text-align: center;
+        }
+      }
+      .custom-list{
+        .left{
+          border-right: 1px solid #ddd;
+        }
+        .right{
+          text-align: right;
+        }
+      }
+    }
+  }
+}

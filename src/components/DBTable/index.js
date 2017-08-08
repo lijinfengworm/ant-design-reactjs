@@ -90,7 +90,7 @@ class DBTable extends React.PureComponent {
       this.updateTableState(res);
       // 这个参数用于判断获取schema是同步还是异步
       if (this.state.loadingSchema) {
-        this.setState({loadingSchema: false}, this.refresh);
+        this.setState({loadingSchema: false}, this.refresh(e));
       }
     });
   }
@@ -101,7 +101,7 @@ class DBTable extends React.PureComponent {
   componentDidMount() {
     // 如果是异步获取schema的话, 后面有callback会调用refresh的, 这里就不用调了
     if (!this.state.loadingSchema) {
-      this.refresh();
+      this.refresh(e);
     }
   }
 
@@ -149,7 +149,7 @@ class DBTable extends React.PureComponent {
         currentPage: 1,
         total: 0,
         loadingSchema: false,
-      }, this.refresh);
+      }, this.refresh(e));
     });
   }
 
@@ -242,8 +242,9 @@ class DBTable extends React.PureComponent {
   /**
    * 按当前的查询条件重新查询一次
    */
-  refresh = async() => {
+  refresh = async(e) => {
     // 如果加载schema失败, 就不要查询了
+    e.preventDefault();
     if (!this.inited) {
       return;
     }
@@ -290,7 +291,6 @@ class DBTable extends React.PureComponent {
     const tmpObj = Object.assign({}, queryObj);  // 创建一个新的临时对象, 其实直接修改queryObj也可以
     tmpObj.page = page;
     tmpObj.pageSize = pageSize;
-    console.info(queryObj);
     // 每次查询时, 要显示一个提示, 同时table组件也要变为loading状态
     const hide = message.loading('正在查询...', 0);
     try {
@@ -413,7 +413,7 @@ class DBTable extends React.PureComponent {
           <InnerForm parentHandleSubmit={this.handleFormSubmit} schema={this.querySchema} tableConfig={this.tableConfig}
                    tableName={this.tableName}/>
           <InnerTotal data={this.state.data} tableLoading={this.state.tableLoading}
-                    schema={this.dataSchema} refresh={this.refresh}
+                    schema={this.dataSchema} refresh={this.refresh(e)}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
         </Spin>
       );
@@ -427,7 +427,7 @@ class DBTable extends React.PureComponent {
           <InnerForm parentHandleSubmit={this.handleFormSubmit} schema={this.querySchema} tableConfig={this.tableConfig}
                    tableName={this.tableName}/>
           <InnerList data={this.state.data} tableLoading={this.state.tableLoading}
-                    schema={this.dataSchema} refresh={this.refresh}
+                    schema={this.dataSchema} refresh={this.refresh(e)}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
         </Spin>
       );
@@ -437,7 +437,7 @@ class DBTable extends React.PureComponent {
       return (
         <Spin spinning={this.state.loadingSchema} delay={500}>
           <InnerQueryMachine data={this.state.data} tableLoading={this.state.tableLoading}
-                    schema={this.dataSchema} refresh={this.refresh}
+                    schema={this.dataSchema} refresh={this.refresh(e)}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
         </Spin>
       );
@@ -450,7 +450,7 @@ class DBTable extends React.PureComponent {
          <InnerForm parentHandleSubmit={this.handleFormSubmit} schema={this.querySchema} tableConfig={this.tableConfig}
                    tableName={this.tableName}/>
           <InnerFault data={this.state.data} tableLoading={this.state.tableLoading}
-                    schema={this.dataSchema} refresh={this.refresh}
+                    schema={this.dataSchema} refresh={this.refresh(e)}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
         </Spin>
       );
@@ -460,7 +460,7 @@ class DBTable extends React.PureComponent {
       return (
         <Spin spinning={this.state.loadingSchema} delay={500}>
           <InnerFaultDetail data={this.state.data} tableLoading={this.state.tableLoading}
-                    schema={this.dataSchema} refresh={this.refresh}
+                    schema={this.dataSchema} refresh={this.refresh(e)}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
         </Spin>
       );
@@ -473,7 +473,7 @@ class DBTable extends React.PureComponent {
          <InnerForm parentHandleSubmit={this.handleFormSubmit} schema={this.querySchema} tableConfig={this.tableConfig}
                    tableName={this.tableName}/>
           <InnerCapacity data={this.state.data} tableLoading={this.state.tableLoading}
-                    schema={this.dataSchema} refresh={this.refresh}
+                    schema={this.dataSchema} refresh={this.refresh(e)}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
         </Spin>
       );
@@ -486,7 +486,7 @@ class DBTable extends React.PureComponent {
          <InnerForm parentHandleSubmit={this.handleFormSubmit} schema={this.querySchema} tableConfig={this.tableConfig}
                    tableName={this.tableName}/>
           <InnerCapacityProvince data={this.state.data} tableLoading={this.state.tableLoading}
-                    schema={this.dataSchema} refresh={this.refresh}
+                    schema={this.dataSchema} refresh={this.refresh(e)}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
         </Spin>
       );
@@ -496,7 +496,7 @@ class DBTable extends React.PureComponent {
       return (
         <Spin spinning={this.state.loadingSchema} delay={500}>
           <InnerCapacityDetail data={this.state.data} tableLoading={this.state.tableLoading}
-                    schema={this.dataSchema} refresh={this.refresh}
+                    schema={this.dataSchema} refresh={this.refresh(e)}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
         </Spin>
       );
@@ -512,7 +512,7 @@ class DBTable extends React.PureComponent {
         <InnerForm parentHandleSubmit={this.handleFormSubmit} schema={this.querySchema} tableConfig={this.tableConfig}
                    tableName={this.tableName}/>
         <InnerTable data={this.state.data} tableLoading={this.state.tableLoading}
-                    schema={this.dataSchema} refresh={this.refresh}
+                    schema={this.dataSchema} refresh={this.refresh(e)}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
         <InnerPagination currentPage={this.state.currentPage} total={this.state.total} pageSize={this.state.pageSize}
                          parentHandlePageChange={this.handlePageChange} tableConfig={this.tableConfig}

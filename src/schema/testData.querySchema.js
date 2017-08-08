@@ -30,10 +30,4 @@ module.exports = [
     options: [{key: '1', value: 'RS30C1'}, {key: '2', value: 'RS30C2'}],
     defaultValue: '1', // 这个defaultValue必须和options中的key是对应的
   },
-  
-  {
-    key: 'xxbirthday',
-    title: '选择日期',
-    dataType: 'datetime',  // 日期等值查询
-  },
 ];

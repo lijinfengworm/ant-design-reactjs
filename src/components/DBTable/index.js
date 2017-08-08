@@ -445,7 +445,10 @@ class DBTable extends React.PureComponent {
     //故障记录
     if(this.tableName == 'faultData'){
       return (
+        
         <Spin spinning={this.state.loadingSchema} delay={500}>
+         <InnerForm parentHandleSubmit={this.handleFormSubmit} schema={this.querySchema} tableConfig={this.tableConfig}
+                   tableName={this.tableName}/>
           <InnerFault data={this.state.data} tableLoading={this.state.tableLoading}
                     schema={this.dataSchema} refresh={this.refresh}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
@@ -465,7 +468,10 @@ class DBTable extends React.PureComponent {
     //产能分析
     if(this.tableName == 'capacityData'){
       return (
+        
         <Spin spinning={this.state.loadingSchema} delay={500}>
+         <InnerForm parentHandleSubmit={this.handleFormSubmit} schema={this.querySchema} tableConfig={this.tableConfig}
+                   tableName={this.tableName}/>
           <InnerCapacity data={this.state.data} tableLoading={this.state.tableLoading}
                     schema={this.dataSchema} refresh={this.refresh}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>
@@ -475,7 +481,10 @@ class DBTable extends React.PureComponent {
     //各省产能分析
     if(this.tableName == 'capacityProvinceData'){
       return (
+       
         <Spin spinning={this.state.loadingSchema} delay={500}>
+         <InnerForm parentHandleSubmit={this.handleFormSubmit} schema={this.querySchema} tableConfig={this.tableConfig}
+                   tableName={this.tableName}/>
           <InnerCapacityProvince data={this.state.data} tableLoading={this.state.tableLoading}
                     schema={this.dataSchema} refresh={this.refresh}
                     tableConfig={this.tableConfig} tableName={this.tableName}/>

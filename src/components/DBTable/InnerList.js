@@ -697,28 +697,27 @@ class InnerList extends React.PureComponent {
     		runningIcon = 'cloud';
     	}
     	return (
-    		<Col span={8}>
-	        	<Card title={cad.name} bordered={false}>
-	        		<div className="custom-image">
-	        			<Row type="flex">
-
-					      <Col span={10} order={1}>电源：<Button type="primary" className={'status-on-'+cad.power}><Icon type={onIcon} />{onText}</Button></Col>
-					      <Col span={14} order={2}>开机：<Button type="primary" className={'status-running-'+cad.machine}><Icon type={runningIcon} />{runningText}</Button></Col>
-					    </Row>
-	        		</div>
-	        		<div className="custom-card">
-	        		 	<a href="/#/machine?id=1">查看详情</a>
-	        		</div>
-	        	</Card>
-	      	</Col>
+      		<Col span={8}>
+          	<div className="main-list">
+              <div className="list-header"><span>{cad.name}</span></div>
+          		<div className="custom-image">
+          			<Row type="flex">
+  				      <Col span={12} order={1}><div className="power"><span className={'status-on-'+cad.power}>{onText}</span><span className="power-status">电源</span></div></Col>
+  				      <Col span={12} order={2}><div className="status"><span className={'status-running-'+cad.machine}>{runningText}</span><span className="status-status">状态</span></div></Col>
+  				     </Row>
+          		</div>
+          		<div className="custom-card">
+          		 	<a href="/#/machine?id=1">查看详情</a>
+          		</div>
+          	</div>
+        	</Col>
     	);
     });
     return (
-      <div className="card-main" style={{ background: '#ECECEC', padding: '30px' }}>
-        <Row gutter={16}>
-
+      <div className="card-main">
+        <Row gutter={24} >
         	{cardNode}
-	    </Row>
+        </Row>
       </div>
     );
   }

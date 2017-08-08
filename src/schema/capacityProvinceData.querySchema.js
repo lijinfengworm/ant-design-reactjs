@@ -23,17 +23,8 @@ module.exports = [
     defaultValue: '1', // 这个defaultValue必须和options中的key是对应的
   },
   {
-    key: 'model',
-    title: '型号',
-    dataType: 'int',
-    showType: 'select',  // 下拉框选择, antd版本升级后, option的key要求必须是string, 否则会有个warning, 后端反序列化时要注意
-    options: [{key: '1', value: 'RS30C1'}, {key: '2', value: 'RS30C2'}],
-    defaultValue: '1', // 这个defaultValue必须和options中的key是对应的
-  },
-  
-  {
-    key: 'xxbirthday',
-    title: '选择日期',
+    key: 'starttime',
+    title: '开始时间',
     dataType: 'datetime',  // 日期等值查询
   },
 ];

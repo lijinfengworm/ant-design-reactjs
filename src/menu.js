@@ -12,16 +12,10 @@
 
 // 定义siderbar菜单
 const sidebarMenu = [
-  
-  {
-    key: 'alone',
-    name: '我没有子菜单',
-    icon: 'clock-circle',
-  },
   {
     key: 'total',
     name: '数据统计',
-    icon: 'setting',
+    icon: 'area-chart',
   },
   {
     key: 'datas',
@@ -31,29 +25,24 @@ const sidebarMenu = [
   {
     key: 'capacity',  // route时url中的值
     name: '产能分析',  // 在菜单中显示的名称
-    icon: 'smile',  // 图标是可选的
+    icon: 'pie-chart',  // 图标是可选的
     child: [
       {
         key: 'option1',
         name: '总产能分析',
-        icon: 'play-circle',   // 二级三级菜单也可以带图标
+        icon: 'bar-chart',   // 二级三级菜单也可以带图标
       },
       {
         key: 'option2',
         name: '各省产能分析',
-        icon: 'android',
+        icon: 'dot-chart',
       },
     ],
   },
   {
     key: 'fault',
     name: '故障记录',
-    icon: 'setting',
-  },
-
-  {
-    key: 'alone2',
-    name: '我没有图标',
+    icon: 'exception',
   },
   /*{
     key: 'noiconhaha',

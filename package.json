@@ -58,6 +58,8 @@
     "webpack-dev-server": "1.16.2"
   },
   "dependencies": {
+    "clean": "^4.0.2",
+    "prod": "^1.0.1",
     "superagent": "2.3.0"
   },
   "scripts": {

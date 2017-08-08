@@ -701,81 +701,88 @@ class InnerQueryMachine extends React.PureComponent {
     		<div>
     			<div className="machine-status">
 		    		<div className="machine-header"><p>设备运营状态</p></div>
-		    		<Row>
-				      <Col xs={12} sm={12} md={12} lg={12} xl={12}><span>{cad.status.name}</span></Col>
-				      <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-				      <Row type="flex">
-				        <Col span={10} order={1}>电源：<Button type="primary" className={'status-on-'+cad.status.power_status}><Icon type={onIcon} />{onText}</Button></Col>
-				        <Col span={14} order={2}>开机：<Button type="primary" className={'status-running-'+cad.status.machine_status}><Icon type={runningIcon} />{runningText}</Button></Col>
-				      </Row>
-				      </Col>
-				    </Row>
-				    <Row>
-				      <Col xs={12} sm={12} md={12} lg={12} xl={12}><div><img src={cad.status.image} style={{ width: '300px' }}  /></div></Col>
-				      <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+            <div className="machine-content">
+  		    		<Row  gutter={24} className="machine-status-main" >
+  				      <Col span={18} className="gutter-row" ><span className="border-left"></span><span className="border-right">{cad.status.name}</span></Col>
+  				      <Col span={6} className="gutter-row" >
+  				      <Row type="flex">
+  				        <Col span={10} order={1} >电源：<span className={'status-on-'+cad.status.power_status}>{onText}</span></Col>
+  				        <Col span={14} order={2}>开机：<span className={'status-running-'+cad.status.machine_status}>{runningText}</span></Col>
+  				      </Row>
+  				      </Col>
+  				    </Row>
+            </div>
+				    <Row gutter={24}>
+				      <Col span={12} className="gutter-row"><div><img src={cad.status.image}  style={{ padding: '20px' }} /></div></Col>
+				      <Col span={12} className="gutter-row">
 				      	<Row>
-				      		<Col xs={11} sm={11} md={11} lg={11} xl={11}>
-				      		  <Card title={cad.status.left.sta == 1 ? '左侧开' : '左侧关'} bordered={false}>
+				      		<Col span={12}>
+				      		  <div className="list-left">
+                    <div className="list-header"><span className="left-point1"></span><span> {cad.status.left.sta == 1 ? '左侧: 开' : '左侧: 关'}</span></div>
 				      		    {
 				      		    	cad.status.left.data.map(function(item){
-				      		    		return  <div className="machine-list"><span>{item.name}</span><Tag color={item.sta == 1 ? '#87d068' : '#f50'}>{item.sta == 1 ? '  开  ' : '  关  '}</Tag></div>
+				      		    		return  <div className="machine-list"><span className={'left-point'+item.sta}></span><span className="right-text">{item.name}</span></div>
 				      		    	})
 				      		    }
-							      </Card>
+							      </div>
 				      		</Col>
-				      		<Col xs={11} sm={11} md={11} lg={11} xl={11}>
-							  <Card title={cad.status.left.sta == 1 ? '右侧开' : '右侧关'} bordered={false}>
+				      		<Col span={12}>
+							  <div className="list-right">
+                <div className="list-header"><span className="left-point1"></span><span> {cad.status.left.sta == 1 ? '右侧: 开' : '右侧: 关'}</span></div>
 							    {
 				      		    	cad.status.right.data.map(function(item){
-				      		    		return  <div className="machine-list"><span>{item.name}</span><Tag color={item.sta == 1 ? '#87d068' : '#f50'}>{item.sta == 1 ? '  开  ' : '  关  '}</Tag></div>
+				      		    		return  <div className="machine-list"><span className={'left-point'+item.sta}></span><span className="right-text">{item.name}</span></div>
 				      		    	})
 				      		    }
-							  </Card>
+							  </div>
 				      		</Col>
 				      	</Row>
 				      </Col>
 				    </Row>
 				  </div>
 				  <div className="machine-data">
-				  	<div className="machine-header"><p>设备数据</p></div>
+				  	<div className="machine-header"><span className="border-left"></span><span>设备数据</span></div>
 				  	<Row>
-			      		<Col xs={11} sm={11} md={11} lg={11} xl={11}>
-			      		  <Card title="左侧" bordered={false} noHovering={false}>
+			      		<Col span={12}>
+			      		  <div title="左侧" className="list-left">
+                    <div className="list-header"><span className="left-point1"></span><span>左侧</span></div>
 			      		    {
 			      		    	cad.data.left.data.map(function(item){
-			      		    		return  <div className="machine-list"><span>{item.name}</span><span>{item.value}</span></div>
+			      		    		return  <div className="machine-list"><span className="span-left">{item.name}</span><span className="span-right">{item.value}</span><Button type="primary">修改</Button></div>
 			      		    	})
 			      		    }
-						  </Card>
+						    </div>
 			      		</Col>
-			      		<Col xs={11} sm={11} md={11} lg={11} xl={11}>
-						  <Card title="右侧" bordered={false} noHovering={false}>
-						    {
-			      		    	cad.data.right.data.map(function(item){
-			      		    		return  <div className="machine-list"><span>{item.name}</span><span>{item.value}</span></div>
-			      		    	})
-			      		    }
-						  </Card>
+			      		<Col span={12}>
+  						  <div title="右侧" className="list-right">
+                  <div className="list-header"><span className="left-point1"></span><span>左侧</span></div>
+  						    {
+		      		    	cad.data.right.data.map(function(item){
+		      		    		return  <div className="machine-list"><span className="span-left">{item.name}</span><span className="span-right">{item.value}</span><Button type="primary">修改</Button></div>
+		      		    	})
+		      		    }
+  						  </div>
 			      		</Col>
 				      	
 				    </Row>
 				  </div>
 				  <div className="machine-info">
-				  	<div className="machine-header"><p>设备信息</p></div>
+				  	<div className="machine-header"><span className="border-left"></span><span>技术参数</span></div>
 				  	<Row>
-			      		<Col xs={11} sm={11} md={11} lg={11} xl={11}>
-			      		  <Card title="技术参数" bordered={false} noHovering={true} >
-						    {
-			      		    	cad.info.params.map(function(item){
-			      		    		return  <div className="machine-list"><span>{item.name}</span><span>{item.unit}</span><span>{item.norms}</span></div>
-			      		    	})
-			      		    }
-						  </Card>
+			      		<Col span={12}>
+                <div  className="list-right">
+                  <div className="list-header"><span className="left1">项目</span><span className="left2">单位</span><span className="left3">技术指标</span></div>
+						      {
+		      		    	cad.info.params.map(function(item){
+		      		    		return  <div className="machine-list"><span className="left1">{item.name}</span><span className="left2">{item.unit}</span><span className="left3">{item.norms}</span></div>
+		      		    	})
+		      		    }
+						    </div>
 			      		</Col>
-			      		<Col xs={11} sm={11} md={11} lg={11} xl={11}>
-						  <Card title="外形尺寸图" bordered={false} noHovering={true}>
-						    <img src={cad.info.image} style={{ width: '300px' }} />
-						  </Card>
+			      		<Col span={12}>
+  						  <div title="外形尺寸图" bordered={false} noHovering={true}>
+  						    <img src={cad.info.image} style={{ width: '300px' }} />
+  						  </div>
 			      		</Col>
 				      	
 				    </Row>
@@ -787,9 +794,7 @@ class InnerQueryMachine extends React.PureComponent {
     });
     return (
       <div className="query-main">
-        <Row gutter={16}>
         	{queryTable}
-	    </Row>
       </div>
     );
   }

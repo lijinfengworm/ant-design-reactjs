@@ -323,6 +323,7 @@ class MockAjax {
       if (globalConfig.isCrossDomain()) {
         tmp.withCredentials();
       }
+      tmp.withCredentials();
       // 设置全局的超时时间
       if (globalConfig.api.timeout && !isNaN(globalConfig.api.timeout)) {
         tmp.timeout(globalConfig.api.timeout);
@@ -443,7 +444,8 @@ class MockCRUDUtil {
 
   select(queryObj) {
     console.info(`${globalConfig.getAPIPath()}`);
-    return this.MockAjax.get(`${globalConfig.getAPIPath()}/static/data/${this.tableName}.json`, queryObj);
+    return this.MockAjax.get(`${globalConfig.getAPIPath()}${this.tableName}`, queryObj);
+    // return this.MockAjax.get(`${globalConfig.getAPIPath()}/static/data/${this.tableName}.json`, queryObj);
     //return this.MockAjax.get('http://127.0.0.1:8080/static/data/testData.json', queryObj);
   }
 

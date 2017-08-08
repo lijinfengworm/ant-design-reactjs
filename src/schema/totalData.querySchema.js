@@ -32,8 +32,13 @@ module.exports = [
   },
   
   {
-    key: 'xxbirthday',
-    title: '选择日期',
+    key: 'starttine',
+    title: '开始时间',
+    dataType: 'datetime',  // 日期等值查询
+  },
+  {
+    key: 'endtime',
+    title: '结束日期',
     dataType: 'datetime',  // 日期等值查询
   },
 ];

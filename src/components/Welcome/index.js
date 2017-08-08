@@ -10,9 +10,9 @@ class Welcome extends React.PureComponent {
     return (
       <div>
         <h1 className="welcome-text">
-          Welcome, 这里是欢迎界面, 欢迎访问我的<a target="_blank" href="http://jxy.me">blog</a>.
+          欢迎访问航数智能.
           <br />
-          项目地址: <a target="_blank" href="https://github.com/jiangxy/react-antd-admin">https://github.com/jiangxy/react-antd-admin</a>
+          项目介绍
         </h1>
       </div>
     );

@@ -686,44 +686,51 @@ class InnerFaultDetail extends React.PureComponent {
     	//循环
     	return (
     		<div>
-				<div className="machine-status">
-		    		<div className="machine-header"><p>故障信息</p></div>
-				    <Row>
-				      <Col xs={12} sm={12} md={12} lg={12} xl={12}><div><img src={cad.status.image} style={{ width: '300px' }}  /></div></Col>
-				      <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-				      	<Row>
-				      		<Col xs={24} sm={24} md={24} lg={24} xl={24}>
-							  <Card title="" bordered={false}>
-				      		    {
-				      		    	cad.status.right.data.map(function(item){
-				      		    		return  <div className="machine-list"><span>{item.name}</span><span>{item.value}</span></div>
-				      		    	})
-				      		    }
-							  </Card>
-				      		</Col>
-				      	</Row>
-				      </Col>
-				    </Row>
+				  <div className="machine-status">
+            <div className="machine-header"><span className="border-left"></span><p>设备运营状态</p></div>
+            <Row gutter={24}>
+              <Col span={12} className="gutter-row"><div><img src={cad.status.image} style={{ padding: '20px' }}  /></div></Col>
+              <Col span={12}>
+                <div className="list-right">
+                  <Row gutter={24}>
+                    <Col span={8}><span className="right-header-top  right-color">{cad.status.right.data.name}</span><span className="right-header-bottom">型号</span></Col>
+                    <Col span={8}><span className="right-header-top">{cad.status.right.data.type}</span><span className="right-header-bottom">类型</span></Col>
+                    <Col span={8}><span className="right-header-top">{cad.status.right.data.value}</span><span className="right-header-bottom">纺纱</span></Col>
+                  </Row>
+                  <div className="right-content">
+                      <Row gutter={24} className="right-content-list">
+                        <Col span={8}><span className="right-label">故障类型</span><span className="right-cot">{cad.status.right.data.fault_type}</span></Col>
+                        <Col span={8}><span className="right-label">故障级别</span><span className="right-cot">{cad.status.right.data.level}</span></Col>
+                        <Col span={8}><span className="right-label">生成工单</span><span className="right-cot">{cad.status.right.data.sta}</span></Col>
+                      </Row>
+                      <div className="right-content-list"><span className="right-label">故障描述</span><span>{cad.status.right.data.fault_msg}</span></div>
+                      <div className="right-content-list"><span className="right-label">故障时间</span><span>{cad.status.right.data.fault_time}</span></div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
 		    	</div>
 			    <div className="machine-data">
-		    		<div className="machine-header"><p>故障维修记录</p></div>
-			      	<Row>
-			      		<Col xs={24} sm={24} md={24} lg={24} xl={24}>
-			      		<Row className="data-line"><Col span={8}>{cad.data.fault_time}</Col><Col span={8}>{cad.data.fault_msg}</Col><Col span={8}>{cad.data.fault_author}</Col></Row>
-			      		    {
-			      		    	cad.data.bottom.data.map(function(item){
-			      		    		return  <div className="machine-list"><Row className="data-line"><Col span={8}><span>{item.fault_time}</span></Col> <Col span={8}><span>{item.fault_msg}</span></Col><Col span={8}><span>{item.fault_author}</span></Col></Row></div>
-			      		    	})
-			      		    }
-			      		</Col>
-			      	</Row>
+		    		<div className="machine-header"><span className="border-left"></span><span>技术参数</span></div>
+            <Row>
+                <Col span={24}>
+                <div  className="list-right">
+                  <div className="list-header"><span className="left1">项目</span><span className="left2">单位</span><span className="left3">技术指标</span></div>
+                  {
+                    cad.data.bottom.data.map(function(item){
+                      return  <div className="machine-list"><span className="left1">{item.fault_time}</span><span className="left2">{item.fault_msg}</span><span className="left3">{item.fault_author}</span></div>
+                    })
+                  }
+                </div>
+                </Col>
+            </Row>
 			    </div>
 
 				<div className="machine-process">
 		    		<div className="machine-header"><p>故障信息</p></div>
 				    <Row>
 				      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-				      <Steps current={cad.process.sta}>
+				      <Steps direction="vertical" current={cad.process.sta}>
 				      <Step title={cad.process.data1.name} description={cad.process.data1.msg} />
 				      <Step title={cad.process.data1.name} description={cad.process.data2.msg} />
 				      <Step title={cad.process.data1.name} description={cad.process.data3.msg} />
@@ -738,9 +745,7 @@ class InnerFaultDetail extends React.PureComponent {
     });
     return (
       <div className="fault-main">
-        <Row gutter={16}>
         	{faultTable}
-	    </Row>
       </div>
     );
   }

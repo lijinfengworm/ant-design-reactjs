@@ -163,7 +163,7 @@ const SchemaUtils = {
         for (const col of rows[i]) {
           formCols.push(col(getFieldDecorator));  // 注意这里的col是一个函数
         }
-        formRows.push(<Row key={i} gutter={16}>{formCols}</Row>);
+        formRows.push(<div key={i} gutter={16}>{formCols}</div>);
       }
 
       return (<Form horizontal>
@@ -320,7 +320,7 @@ const SchemaUtils = {
     // col内部又用了一个row做布局
     return getFieldDecorator => (
       <Col key={`${field.key}Begin`} sm={8}>
-        <Row>
+        <div>
           <Col span={16}>
             <FormItem key={`${field.key}Begin`} label={field.title} labelCol={{ span: 15 }} wrapperCol={{ span: 9 }}>
               {beginFormItem(getFieldDecorator)}
@@ -331,7 +331,7 @@ const SchemaUtils = {
               {endFormItem(getFieldDecorator)}
             </FormItem>
           </Col>
-        </Row>
+        </div>
       </Col>
     );
   },
@@ -374,13 +374,13 @@ const SchemaUtils = {
               <FormItem key={`${field.key}Begin`} label={field.title} labelCol={{ span: 10 }}
                         wrapperCol={{ span:14 }}>
                 {getFieldDecorator(`${field.key}Begin`, {initialValue: field.defaultValueBegin ? moment(field.defaultValueBegin) : null})
-                (<DatePicker showTime format="YYYY-MM-DD HH:mm:ss" placeholder={field.placeholderBegin || '开始日期'}/>)}
+                (<DatePicker showTime format="YYYY-MM-DD HH:mm:ss" placeholder={field.placeholderBegin || '开始日期'} style={{ width: '187px' }} />)}
               </FormItem>
             </Col>
             <Col key={`${field.key}End`} sm={8}>
               <FormItem key={`${field.key}End`} labelCol={{ span: 10 }} wrapperCol={{ span:14 }}>
                 {getFieldDecorator(`${field.key}End`, {initialValue: field.defaultValueEnd ? moment(field.defaultValueEnd) : null})
-                (<DatePicker showTime format="YYYY-MM-DD HH:mm:ss" placeholder={field.placeholderEnd || '结束日期'}/>)}
+                (<DatePicker showTime format="YYYY-MM-DD HH:mm:ss" placeholder={field.placeholderEnd || '结束日期'} style={{ width: '187px' }} />)}
               </FormItem>
             </Col>
           </div>

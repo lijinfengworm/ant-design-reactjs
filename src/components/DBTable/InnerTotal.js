@@ -680,72 +680,83 @@ class InnerTotal extends React.PureComponent {
     
     var cardNodeTotal = this.state.data.map(function(cad){
     	return (
-    		<div>
+    		<div className="gutter-example">
     		  <div className="total-title"><p>设备上线率</p></div>
 
-	    		<Row>
-				    <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-				      <div className="total-title-circle"><p>{cad.online.left.name}</p></div>
-				      <div className="total-circle-list">
-				      	<Progress type="circle" percent={cad.online.left.value} strokeWidth ={7} width ={200}/>
-				      </div>
+	    		<Row gutter={24} className="online-row">
+				    <Col className="gutter-row" span={6}>
+              <div className="total-6">
+  				      <div className="total-title-circle"><span className="border-left"></span><p>{cad.online.left.name}</p></div>
+  				      <div className="total-circle-list">
+  				      	<Progress type="circle" percent={cad.online.left.value} strokeWidth ={3} width ={100}/>
+  				      </div>
+              </div>
 				    </Col>
-				    <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-				    	<div className="total-title-circle"><p>{cad.online.right.name}</p></div>
-				    	<div className="total-line-list">
-              {
-                cad.online.right.data.map(function(item){
-                  return <div className="total-line-one"><tag>{item.name}</tag><Progress percent={item.value} strokeWidth={12} /></div>
-                })
-              }
-				    	</div>
+				    <Col className="gutter-row" span={18}>
+              <div className="total-18">
+  				    	<div className="total-title-circle"><span className="border-left"></span><p>{cad.online.right.name}</p></div>
+  				    	<div className="total-line-list">
+                {
+                  cad.online.right.data.map(function(item){
+                    return <div className="total-line-one"><tag>{item.name}</tag><Progress percent={item.value} strokeWidth={12} /></div>
+                  })
+                }
+  				    	</div>
+              </div>
 				    </Col>
 				</Row>
         <div className="total-title"><p>设备开机率</p></div>
-
-        <Row>
-          <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-            <div className="total-title-circle"><p>{cad.start.left.name}</p></div>
-            <div className="total-circle-list">
-              <Progress type="circle" percent={cad.start.left.value} strokeWidth ={7} width ={200}/>
-            </div>
-          </Col>
-          <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-            <div className="total-title-circle"><p>{cad.start.right.name}</p></div>
-            <div className="total-line-list">
-            {
-              cad.start.right.data.map(function(item){
-                return <div className="total-line-one"><tag>{item.name}</tag><Progress percent={item.value} strokeWidth={12} /></div>
-              })
-            }
-            </div>
-          </Col>
+        <Row gutter={24} className="start-row">
+            <Col className="gutter-row" span={6}>
+              <div className="total-6">
+                <div className="total-title-circle"><span className="border-left"></span><p>{cad.start.left.name}</p></div>
+                <div className="total-circle-list">
+                  <Progress type="circle" percent={cad.start.left.value} strokeWidth ={3} width ={100}/>
+                </div>
+              </div>
+            </Col>
+            <Col className="gutter-row" span={18}>
+              <div className="total-18">
+                <div className="total-title-circle"><span className="border-left"></span><p>{cad.start.right.name}</p></div>
+                <div className="total-line-list">
+                {
+                  cad.start.right.data.map(function(item){
+                    return <div className="total-start-one"><tag>{item.name}</tag><Progress percent={item.value} strokeWidth={12} /></div>
+                  })
+                }
+                </div>
+              </div>
+            </Col>
         </Row>
         <div className="total-title"><p>设备故障率</p></div>
-
-        <Row>
-          <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-            <div className="total-title-circle"><p>{cad.fault.left.name}</p></div>
-            <div className="total-circle-list">
-              <Progress type="circle" percent={cad.fault.left.value} strokeWidth ={7} width ={200}/>
-            </div>
-          </Col>
-          <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-            <div className="total-title-circle"><p>{cad.fault.right.name}</p></div>
-            <div className="total-line-list">
-            {
-              cad.fault.right.data.map(function(item){
-                return <div className="total-line-one"><tag>{item.name}</tag><Progress percent={item.value} strokeWidth={12} /></div>
-              })
-            }
-            </div>
-          </Col>
+        <Row gutter={24} className="fault-row">
+            <Col className="gutter-row" span={6}>
+              <div className="total-6">
+                <div className="total-title-circle"><span className="border-left"></span><p>{cad.fault.left.name}</p></div>
+                <div className="total-circle-list">
+                  <Progress type="circle" percent={cad.fault.left.value} strokeWidth ={3} width ={100}/>
+                </div>
+              </div>
+            </Col>
+            <Col className="gutter-row" span={18}>
+              <div className="total-18">
+                <div className="total-title-circle"><span className="border-left"></span><p>{cad.fault.right.name}</p></div>
+                <div className="total-line-list">
+                {
+                  cad.fault.right.data.map(function(item){
+                    return <div className="total-fault-one"><tag>{item.name}</tag><Progress percent={item.value} strokeWidth={12} /></div>
+                  })
+                }
+                </div>
+              </div>
+            </Col>
         </Row>
+       
         <div className="total-title"><p>设备故障率</p></div>
 
-        <Row>
+        <Row gutter={24} className="fault_count-row">
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <div className="total-title-circle"><p>{cad.fault_count.name}</p></div>
+            <div className="total-title-circle"><span className="border-left"></span><p>{cad.fault_count.name}</p></div>
             <div className="total-fault-count-list">
             {
               cad.fault_count.data.map(function(item){
@@ -756,10 +767,9 @@ class InnerTotal extends React.PureComponent {
           </Col>
         </Row>
         <div className="total-title"><p>设备效率</p></div>
-
-        <Row>
+        <Row gutter={24} className="efficient-row">
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <div className="total-title-circle"><p>{cad.efficient.name1}</p></div>
+            <div className="total-title-circle"><span className="border-left"></span><p>{cad.efficient.name1}</p><div className="title-list"><div className="total"><span className="span-icon"></span>整机平均效率</div><div className="left"><span className="span-icon"></span>左侧平均效率</div><div className="right"><span className="span-icon"></span></div>右侧平均效率</div></div>
             <div className="total-efficient-list">
             {
               cad.efficient.data.map(function(item){
@@ -773,7 +783,7 @@ class InnerTotal extends React.PureComponent {
     	);
     });
     return (
-      <div className="total-main" style={{ background: '#f8f8f8', padding: '30px' }}>
+      <div className="total-main">
         {cardNodeTotal}
       </div>
     );

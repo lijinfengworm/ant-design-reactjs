@@ -705,10 +705,9 @@ class InnerCapacityProvince extends React.PureComponent {
     	);
     });
     return (
-      <div className="capacity-province-main" style={{ background: '#f8f8f8', padding: '30px' }}>
-      	<div><p></p></div>
+      <div className="capacity-province-main" >
+        <div className="total-title-circle"><span className="border-left"></span><span>江苏省</span></div>
         <Row gutter={16}>
-
         	{cardNode}
 	    </Row>
       </div>

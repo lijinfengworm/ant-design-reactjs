@@ -182,4 +182,28 @@ module.exports = [
     showType: true,
     disabled: false,
   },
+  {
+    key: 'type',
+    title: '数据',
+    dataType: 'varchar',  
+    primary: true,
+    showType: true,
+    disabled: false,
+  },
+  {
+    key: 'value',
+    title: '数据',
+    dataType: 'varchar',  
+    primary: true,
+    showType: true,
+    disabled: false,
+  },
+  {
+    key: 'level',
+    title: '数据',
+    dataType: 'varchar',  
+    primary: true,
+    showType: true,
+    disabled: false,
+  },
 ];
